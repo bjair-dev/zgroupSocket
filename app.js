@@ -71,7 +71,7 @@ app.post('/api/contenedores',  (req, res) => {
   console.log(req.body,"2")
 
   const body = req.body;
-  const values = Object.values(body).join(',');
-  res.json({ values });
-  emicionJson("new_json",   values);
+  /* const values = Object.values(body).join(','); */
+  res.json({ body });
+  emicionJson("new_json",   body);
 })
