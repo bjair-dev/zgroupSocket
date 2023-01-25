@@ -13,7 +13,8 @@ const mensajePaEnvio = null
 const io = require("socket.io")(serverNode,{
     cors:{origin:"*"}
 })
-
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
 
 
 
