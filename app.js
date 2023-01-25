@@ -36,7 +36,7 @@ server.on('message', (message, info) => {
     if (err) {
       console.error('Failed to send response !!')
     } else {
-        emitEvent("new_message", { message: message.toString() });
+      emitEvent("new_message", message.toString() );
 
       console.log('Response send Successfully')
     }
@@ -58,9 +58,19 @@ function emitEvent(eventName, data) {
     io.emit(eventName, data);
 }
 
-
+function emicionJson(eventName, data) {
+  io.emit(eventName, data);
+}
 serverNode.listen(3000,()=>{
     console.log("Conectado al servidor")
 }) 
 
 
+app.post('/api/contenedores',  (req, res) => {
+  console.log(req.body,"2")
+
+  const body = req.body;
+  const values = Object.values(body).join(',');
+  res.json({ values });
+  emicionJson("new_json",   values);
+})
